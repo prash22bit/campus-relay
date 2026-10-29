@@ -181,9 +181,12 @@ export default function AdminDashboard() {
     <div className="admin-layout">
       {/* Sidebar */}
       <aside className="admin-sidebar">
-        <div className="sidebar-brand">
-          <div className="brandmark" style={{ width: 28, height: 28, fontSize: 14 }}>↗</div>
-          <span>Campus Relay</span>
+        <div className="sidebar-brand" style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: 10, paddingBottom: 16 }}>
+          <img src="/nxtwave_white_logo.svg" alt="NxtWave Logo" style={{ height: 24, width: 'auto' }} />
+          <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+            <div className="brandmark" style={{ width: 20, height: 20, fontSize: 11 }}>CR</div>
+            <span style={{ fontSize: 13, fontWeight: 800 }}>Campus Relay</span>
+          </div>
         </div>
 
         <div className="sidebar-section">Main</div>

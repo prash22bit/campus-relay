@@ -40,9 +40,10 @@ export default function AdminLogin() {
     <div className="login-page">
       <div className="login-card animate-fade-up">
         {/* Brand */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 24 }}>
-          <div className="brandmark">↗</div>
-          <div style={{ fontSize: 12, fontWeight: 900, letterSpacing: '.16em', textTransform: 'uppercase', color: '#8b97b5' }}>Campus Relay</div>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 24 }}>
+          <img src="/nxtwave_white_logo.svg" alt="NxtWave Logo" style={{ height: 26, width: 'auto' }} />
+          <div style={{ height: 18, width: 1, background: 'rgba(255,255,255,0.2)' }} />
+          <div style={{ fontSize: 12, fontWeight: 900, letterSpacing: '.16em', textTransform: 'uppercase', color: '#c7ff5e' }}>Operator Portal</div>
         </div>
 
         <h1>Operator login</h1>

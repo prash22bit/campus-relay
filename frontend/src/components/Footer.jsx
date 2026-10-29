@@ -14,9 +14,10 @@ export default function Footer() {
     <footer className="footer" style={{ borderTop: '1px solid #e1e7f1', background: '#0b1020', color: '#9aa5be', padding: '40px clamp(20px, 5vw, 76px) 24px' }}>
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: 32, marginBottom: 32 }}>
         <div>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 10, color: '#fff', marginBottom: 12 }}>
-            <span style={{ width: 28, height: 28, borderRadius: 8, background: '#c7ff5e', color: '#0b1020', display: 'grid', placeItems: 'center', fontWeight: 900, fontSize: 13 }}>NW</span>
-            <strong style={{ letterSpacing: '.06em', fontSize: 14 }}>NXTWAVE LIVE WORKSHOP</strong>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 12, color: '#fff', marginBottom: 14 }}>
+            <img src="/nxtwave_white_logo.svg" alt="NxtWave Logo" style={{ height: 26, width: 'auto' }} />
+            <div style={{ height: 18, width: 1, background: 'rgba(255,255,255,0.2)' }} />
+            <strong style={{ letterSpacing: '.06em', fontSize: 13, color: '#c7ff5e' }}>LIVE WORKSHOP</strong>
           </div>
           <p style={{ fontSize: 13, lineHeight: 1.6, color: '#8894af', margin: 0 }}>
             "Build Your First AI Project in 60 Minutes" — a free, live, hands-on masterclass empowering engineering students to build, deploy, and showcase real-world AI applications.

@@ -25,11 +25,12 @@ export default function Topbar() {
 
   return (
     <header className="topbar">
-      <NavLink to="/" className="brand" style={{ textDecoration: 'none', color: 'inherit' }}>
-        <span className="brandmark">NW</span>
+      <NavLink to="/" className="brand" style={{ textDecoration: 'none', color: 'inherit', display: 'flex', alignItems: 'center', gap: 14 }}>
+        <img src="/nxtwave_white_logo.svg" alt="NxtWave Logo" style={{ height: 26, width: 'auto' }} />
+        <div style={{ height: 20, width: 1, background: 'rgba(255,255,255,0.2)' }} />
         <div style={{ display: 'flex', flexDirection: 'column', lineHeight: 1.1 }}>
-          <span style={{ fontSize: 13, fontWeight: 900, letterSpacing: '.08em' }}>NXTWAVE</span>
-          <span style={{ fontSize: 10, color: '#c7ff5e', fontWeight: 700, letterSpacing: '.12em' }}>AI MASTERCLASS</span>
+          <span style={{ fontSize: 13, fontWeight: 900, letterSpacing: '.08em', color: '#fff' }}>CAMPUS RELAY</span>
+          <span style={{ fontSize: 10, color: '#c7ff5e', fontWeight: 700, letterSpacing: '.12em' }}>AI WORKSHOP</span>
         </div>
       </NavLink>
 
