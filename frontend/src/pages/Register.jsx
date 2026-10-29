@@ -19,6 +19,7 @@ import {
   X,
 } from 'lucide-react'
 import { registerStudent, validateCode } from '../api/client'
+import AddToCalendarButton from '../components/AddToCalendarButton'
 
 const BRANCHES = ['CSE', 'IT', 'AI & Data Science', 'ECE', 'EEE', 'Mechanical', 'Civil', 'Other']
 const YEARS = ['2025', '2026', '2027', '2028', 'Other']
@@ -256,13 +257,14 @@ export default function Register() {
                     Share your invite link with friends. When 2 classmates register, you will automatically unlock the <strong>AI Prompt Engineering Toolkit & Complete GitHub Repository</strong>!
                   </p>
 
-                  <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
+                  <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap', alignItems: 'center' }}>
                     <button className="btn btn-dark btn-sm" onClick={shareWA} style={{ background: '#25D366', color: '#fff', border: 'none', display: 'inline-flex', alignItems: 'center', gap: 6 }}>
                       <Share2 size={14} /> Share on WhatsApp <ArrowUpRight size={13} />
                     </button>
                     <button className="btn btn-outline-dark btn-sm" onClick={() => copyText(result.inviteUrl)} style={{ display: 'inline-flex', alignItems: 'center', gap: 6 }}>
                       <Copy size={14} /> Copy Invite Link
                     </button>
+                    <AddToCalendarButton passId={result.personalCode} variant="card" />
                   </div>
                 </div>
 
@@ -303,6 +305,7 @@ export default function Register() {
                 <Zap size={16} style={{ color: '#c7ff5e' }} />
                 <span><strong>Fee:</strong> 100% Free Pass</span>
               </div>
+              <AddToCalendarButton variant="navbar" style={{ marginTop: 6, width: '100%', justifyContent: 'center' }} />
             </div>
 
             <div style={{ fontSize: 12, color: '#9fb1d4', lineHeight: 1.6 }}>

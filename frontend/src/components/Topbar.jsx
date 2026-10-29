@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { NavLink, useNavigate, useLocation } from 'react-router-dom'
 import { ArrowUpRight, Menu, X, Sparkles, Calendar, Laptop, HelpCircle, ShieldCheck } from 'lucide-react'
 import { useAuth } from '../context/AuthContext'
+import AddToCalendarButton from './AddToCalendarButton'
 
 export default function Topbar() {
   const { isAuthenticated, logout } = useAuth()
@@ -75,9 +76,12 @@ export default function Topbar() {
           {isAuthenticated ? (
             <button onClick={handleLogout} className="btn btn-outline btn-sm">Logout</button>
           ) : (
-            <button onClick={() => scrollTo('register')} className="btn btn-primary btn-sm desktop-only-btn" style={{ display: 'inline-flex', alignItems: 'center', gap: 6 }}>
-              Claim Free Seat <ArrowUpRight size={14} />
-            </button>
+            <>
+              <AddToCalendarButton variant="navbar" className="desktop-only-btn" />
+              <button onClick={() => scrollTo('register')} className="btn btn-primary btn-sm desktop-only-btn" style={{ display: 'inline-flex', alignItems: 'center', gap: 6 }}>
+                Claim Free Seat <ArrowUpRight size={14} />
+              </button>
+            </>
           )}
 
           {/* Mobile Hamburger Toggle Button */}
@@ -225,7 +229,8 @@ export default function Topbar() {
           </button>
         </div>
 
-        <div style={{ marginTop: 'auto', paddingTop: 24, display: 'flex', flexDirection: 'column', gap: 12 }}>
+        <div style={{ marginTop: 'auto', paddingTop: 20, display: 'flex', flexDirection: 'column', gap: 10 }}>
+          <AddToCalendarButton variant="navbar" style={{ width: '100%', height: 46, justifyContent: 'center' }} />
           <button
             onClick={() => scrollTo('register')}
             className="btn btn-primary"

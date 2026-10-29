@@ -25,6 +25,7 @@ import {
   Share2,
 } from 'lucide-react'
 import { registerStudent, validateCode } from '../api/client'
+import AddToCalendarButton from '../components/AddToCalendarButton'
 
 const BRANCHES = ['CSE', 'IT', 'AI & Data Science', 'ECE', 'EEE', 'Mechanical', 'Civil', 'Other']
 const YEARS = ['2025', '2026', '2027', '2028', 'Other']
@@ -165,9 +166,12 @@ export default function Home() {
           <span className="urgency-item desktop-only"><Clock size={13} /> 60 Mins Practical</span>
           <span className="urgency-item desktop-only"><Zap size={13} /> Free Pass</span>
         </div>
-        <button onClick={scrollToRegister} className="urgency-cta-btn">
-          Claim Seat <ArrowUpRight size={12} />
-        </button>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+          <AddToCalendarButton variant="navbar" label="Add to Calendar" style={{ height: 28, fontSize: 11, padding: '3px 10px', background: 'rgba(255,255,255,0.1)' }} />
+          <button onClick={scrollToRegister} className="urgency-cta-btn">
+            Claim Seat <ArrowUpRight size={12} />
+          </button>
+        </div>
       </div>
 
       {/* Hero Section */}
@@ -183,10 +187,11 @@ export default function Home() {
             Tired of surface-level AI theory? Join this guided, beginner-friendly live session to code an interactive AI application from scratch, deploy it to the cloud, and walk away with a real project for your resume.
           </p>
 
-          <div className="hero-cta" style={{ display: 'flex', gap: 14, flexWrap: 'wrap', marginTop: 28 }}>
+          <div className="hero-cta" style={{ display: 'flex', gap: 12, flexWrap: 'wrap', marginTop: 28, alignItems: 'center' }}>
             <button className="btn btn-primary btn-lg" onClick={scrollToRegister}>
               Claim Your Free Seat Now <ArrowUpRight size={16} />
             </button>
+            <AddToCalendarButton variant="navbar" style={{ height: 50, padding: '0 18px', fontSize: 14 }} />
             <button className="btn btn-ghost btn-lg" onClick={() => document.getElementById('project')?.scrollIntoView({ behavior: 'smooth' })}>
               See What You'll Build <ArrowDown size={16} />
             </button>
@@ -384,13 +389,14 @@ export default function Home() {
                       Share your personal invite link with friends from your department. When 2 classmates register, you will unlock the exclusive <strong>AI Prompt Engineering Toolkit & Complete GitHub Repository</strong>!
                     </p>
 
-                    <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
+                    <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap', alignItems: 'center' }}>
                       <button className="btn btn-dark btn-sm" onClick={shareWA} style={{ background: '#25D366', color: '#fff', border: 'none', display: 'inline-flex', alignItems: 'center', gap: 6 }}>
                         <Share2 size={14} /> Share on WhatsApp <ArrowUpRight size={13} />
                       </button>
                       <button className="btn btn-outline-dark btn-sm" onClick={() => copyText(result.inviteUrl)} style={{ display: 'inline-flex', alignItems: 'center', gap: 6 }}>
                         <Copy size={14} /> Copy Invite Link
                       </button>
+                      <AddToCalendarButton passId={result.personalCode} variant="card" />
                     </div>
                   </div>
 
@@ -431,6 +437,7 @@ export default function Home() {
                   <Zap size={16} style={{ color: '#c7ff5e' }} />
                   <span><strong>Fee:</strong> Free for College Students</span>
                 </div>
+                <AddToCalendarButton variant="navbar" style={{ marginTop: 6, width: '100%', justifyContent: 'center' }} />
               </div>
 
               <div style={{ fontSize: 12, color: '#9fb1d4', lineHeight: 1.6 }}>
