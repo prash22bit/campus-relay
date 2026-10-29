@@ -1398,3 +1398,190 @@ ul, ol { list-style: none; }
   }
 }
 
+/* ── Strategy / Plan Page Responsive System ──────────────────── */
+.plan-hero-metrics {
+  display: flex;
+  gap: 10px;
+  margin-top: 24px;
+  flex-wrap: wrap;
+}
+.plan-audience-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+}
+.plan-source-card {
+  padding: 18px 22px;
+}
+.plan-source-header {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.plan-source-num {
+  font-size: 22px;
+  font-weight: 900;
+  color: #3a4a70;
+  width: 32px;
+  text-align: center;
+}
+.plan-source-meta {
+  flex: 1;
+  min-width: 0;
+}
+.plan-source-title {
+  font-weight: 800;
+  font-size: 15px;
+  margin-bottom: 4px;
+}
+.plan-source-desc {
+  font-size: 12px;
+  color: #8b97b5;
+}
+.plan-source-stat {
+  text-align: right;
+  flex-shrink: 0;
+}
+.plan-source-target {
+  font-size: 26px;
+  font-weight: 900;
+  letter-spacing: -.05em;
+  display: block;
+  line-height: 1;
+}
+.plan-source-pct {
+  font-size: 10px;
+  color: #8b97b5;
+  text-transform: uppercase;
+}
+.plan-ai-note-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+.plan-features-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+.plan-tests-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+.plan-rejections-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+}
+.plan-budget-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+.plan-budget-card {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 18px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.plan-budget-total {
+  background: #0d1629;
+  color: #fff;
+  border-color: #1e2c4a;
+}
+.admin-plan-wrapper {
+  background: #fff;
+  border-radius: 20px;
+  padding: 24px clamp(20px, 3vw, 36px);
+  border: 1px solid #dfe5f2;
+}
+.admin-plan-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #eef2f8;
+}
+.plan-embedded-section {
+  margin-bottom: 36px;
+}
+
+/* Mobile Overrides for Strategy / Plan Tab */
+@media (max-width: 768px) {
+  .plan-hero-metrics {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 8px !important;
+    width: 100% !important;
+  }
+  .plan-hero-metrics > div {
+    min-width: 0 !important;
+    padding: 10px 12px !important;
+  }
+  .plan-audience-grid {
+    grid-template-columns: 1fr !important;
+    gap: 12px !important;
+  }
+  .plan-source-header {
+    flex-wrap: wrap !important;
+    gap: 10px !important;
+  }
+  .plan-source-num {
+    width: auto !important;
+    font-size: 18px !important;
+  }
+  .plan-source-meta {
+    flex: 1 1 60% !important;
+  }
+  .plan-source-stat {
+    text-align: right !important;
+  }
+  .plan-ai-note-grid {
+    grid-template-columns: 1fr !important;
+    gap: 10px !important;
+  }
+  .plan-features-grid {
+    grid-template-columns: 1fr !important;
+    gap: 12px !important;
+  }
+  .plan-tests-grid {
+    grid-template-columns: 1fr !important;
+    gap: 14px !important;
+  }
+  .plan-rejections-grid {
+    grid-template-columns: 1fr !important;
+    gap: 12px !important;
+  }
+  .plan-budget-grid {
+    grid-template-columns: 1fr !important;
+    gap: 10px !important;
+  }
+  .admin-plan-wrapper {
+    padding: 16px 12px !important;
+    border-radius: 16px !important;
+  }
+  .admin-plan-head {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 12px !important;
+  }
+  .admin-plan-head h2 {
+    font-size: 20px !important;
+  }
+  .admin-plan-head button {
+    width: 100% !important;
+    height: 42px !important;
+    justify-content: center !important;
+  }
+  .plan-embedded-section {
+    margin-bottom: 24px !important;
+  }
+}
+
+
+

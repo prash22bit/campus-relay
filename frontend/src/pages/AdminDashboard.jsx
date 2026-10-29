@@ -596,15 +596,15 @@ export default function AdminDashboard() {
 
         {/* ── Growth Strategy & Budget View ──────────────── */}
         {view === 'plan' && (
-          <div style={{ background: '#fff', borderRadius: 20, padding: '24px clamp(20px, 3vw, 36px)', border: '1px solid #dfe5f2' }}>
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 20, paddingBottom: 16, borderBottom: '1px solid #eef2f8' }}>
+          <div className="admin-plan-wrapper">
+            <div className="admin-plan-head">
               <div>
                 <span className="pill pill-lime" style={{ marginBottom: 6 }}>INTERNAL CAMPAIGN BLUEPRINT</span>
                 <h2 style={{ margin: '4px 0 0', fontSize: 24, letterSpacing: '-.03em' }}>500-Student Growth Plan & Budget</h2>
               </div>
               <button className="btn btn-dark btn-sm" onClick={() => setView('overview')}>← Back to Overview</button>
             </div>
-            <Plan />
+            <Plan embedded={true} />
           </div>
         )}
       </main>
