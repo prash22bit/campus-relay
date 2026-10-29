@@ -1,13 +1,31 @@
 {
   "name": "campus-relay",
   "version": "1.0.0",
-  "description": "Campus Relay — NxtWave Growth Challenge MERN Stack",
+  "private": true,
+  "description": "Campus Relay — NxtWave Growth Challenge Full-Stack Web Application",
+  "workspaces": [
+    "backend",
+    "frontend"
+  ],
   "scripts": {
-    "install:all": "npm install --prefix backend && npm install --prefix frontend",
-    "dev:backend": "npm run dev --prefix backend",
-    "dev:frontend": "npm run dev --prefix frontend",
+    "build": "npm run build --workspace=frontend",
+    "dev:backend": "npm run dev --workspace=backend",
+    "dev:frontend": "npm run dev --workspace=frontend",
     "dev": "concurrently -n \"backend,frontend\" -c \"cyan,magenta\" \"npm run dev:backend\" \"npm run dev:frontend\"",
-    "start": "npm run start --prefix backend"
+    "start": "node backend/src/server.js",
+    "seed": "node backend/src/seed.js"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "express-rate-limit": "^7.4.0",
+    "express-validator": "^7.2.0",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.7.0",
+    "nanoid": "^3.3.7",
+    "nodemailer": "^6.9.15"
   },
   "devDependencies": {
     "concurrently": "^9.1.0"

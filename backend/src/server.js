@@ -6,9 +6,6 @@ const connectDB = require('./config/db');
 
 const app = express();
 
-// Connect to MongoDB
-connectDB();
-
 // Middleware
 const allowedOrigins = [
   process.env.CLIENT_URL,
@@ -35,10 +32,21 @@ app.use(cors({
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Rate limiting — be generous for demo, tighten for prod
+// Ensure DB connection for every request (especially hot lambdas in Vercel Serverless)
+app.use(async (req, res, next) => {
+  try {
+    await connectDB();
+    next();
+  } catch (err) {
+    console.error('[DB Middleware Error]', err.message);
+    res.status(500).json({ success: false, message: 'Database connection failed. Check MONGODB_URI.' });
+  }
+});
+
+// Rate limiting — be generous for demo
 const limiter = rateLimit({
-  windowMs: 15 * 60 * 1000, // 15 min
-  max: 100,
+  windowMs: 15 * 60 * 1000,
+  max: 200,
   standardHeaders: true,
   legacyHeaders: false,
 });
@@ -46,9 +54,9 @@ app.use('/api/', limiter);
 
 // Stricter limit on registration endpoint
 const registerLimiter = rateLimit({
-  windowMs: 60 * 60 * 1000, // 1 hr
-  max: 10,
-  message: { success: false, message: 'Too many registration attempts. Please try again in an hour.' },
+  windowMs: 60 * 60 * 1000,
+  max: 30,
+  message: { success: false, message: 'Too many registration attempts. Please try again later.' },
 });
 app.use('/api/register', registerLimiter);
 
@@ -72,11 +80,14 @@ app.use((err, req, res, next) => {
   res.status(500).json({ success: false, message: 'Internal server error.' });
 });
 
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => {
-  console.log(`\n🚀 Campus Relay API running on http://localhost:${PORT}`);
-  console.log(`   Health: http://localhost:${PORT}/api/health`);
-  console.log(`   Seed admin: POST http://localhost:${PORT}/api/admin/seed\n`);
-});
+// Only listen when running standalone server directly (local / VPS), NOT when imported in Vercel serverless
+if (require.main === module && !process.env.VERCEL) {
+  const PORT = process.env.PORT || 5001;
+  app.listen(PORT, () => {
+    console.log(`\n🚀 Campus Relay API running on http://localhost:${PORT}`);
+    console.log(`   Health: http://localhost:${PORT}/api/health`);
+    console.log(`   Seed admin: POST http://localhost:${PORT}/api/admin/seed\n`);
+  });
+}
 
 module.exports = app;
