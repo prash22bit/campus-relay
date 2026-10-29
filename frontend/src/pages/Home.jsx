@@ -156,20 +156,16 @@ export default function Home() {
   return (
     <div className="home-page">
       {/* Top Urgency Banner */}
-      <div style={{ background: 'linear-gradient(90deg, #101a35, #17244a)', color: '#c7ff5e', padding: '10px 20px', fontSize: 12, fontWeight: 700, textAlign: 'center', borderBottom: '1px solid rgba(199,255,94,.15)', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 12, flexWrap: 'wrap' }}>
-        <span style={{ display: 'inline-flex', alignItems: 'center', gap: 6, background: 'rgba(199,255,94,.15)', padding: '3px 8px', borderRadius: 99 }}>
-          <span className="live-dot" style={{ width: 6, height: 6 }} /> LIVE MASTERCLASS
-        </span>
-        <span style={{ display: 'inline-flex', alignItems: 'center', gap: 6 }}>
-          <Calendar size={13} /> This Saturday · 7:00 PM IST
-        </span>
-        <span style={{ display: 'inline-flex', alignItems: 'center', gap: 6 }}>
-          <Clock size={13} /> 60 Minutes Hands-On
-        </span>
-        <span style={{ display: 'inline-flex', alignItems: 'center', gap: 6 }}>
-          <Zap size={13} /> 100% Free For Engineering Students
-        </span>
-        <button onClick={scrollToRegister} style={{ background: '#c7ff5e', color: '#0b1020', border: 'none', padding: '4px 10px', borderRadius: 6, fontWeight: 800, fontSize: 11, cursor: 'pointer', display: 'inline-flex', alignItems: 'center', gap: 4 }}>
+      <div className="urgency-banner">
+        <div className="urgency-banner-left">
+          <span className="live-pill">
+            <span className="live-dot" style={{ width: 6, height: 6 }} /> LIVE MASTERCLASS
+          </span>
+          <span className="urgency-item"><Calendar size={13} /> This Saturday · 7:00 PM IST</span>
+          <span className="urgency-item desktop-only"><Clock size={13} /> 60 Mins Practical</span>
+          <span className="urgency-item desktop-only"><Zap size={13} /> Free Pass</span>
+        </div>
+        <button onClick={scrollToRegister} className="urgency-cta-btn">
           Claim Seat <ArrowUpRight size={12} />
         </button>
       </div>
@@ -615,6 +611,31 @@ export default function Home() {
           </button>
         </div>
       </section>
+
+      {/* Native Mobile Sticky Bottom Action Bar */}
+      <div className="mobile-sticky-bar">
+        {!result ? (
+          <div className="mobile-sticky-inner">
+            <div className="mobile-sticky-info">
+              <span className="mobile-sticky-tag">100% Free Pass</span>
+              <strong className="mobile-sticky-title">This Sat · 7:00 PM</strong>
+            </div>
+            <button className="btn btn-primary mobile-sticky-btn" onClick={scrollToRegister}>
+              Claim Seat <ArrowUpRight size={15} />
+            </button>
+          </div>
+        ) : (
+          <div className="mobile-sticky-inner">
+            <div className="mobile-sticky-info">
+              <span className="mobile-sticky-tag" style={{ color: '#c7ff5e' }}>Pass Confirmed</span>
+              <strong className="mobile-sticky-title">{result.personalCode}</strong>
+            </div>
+            <button className="btn mobile-sticky-btn" onClick={shareWA} style={{ background: '#25D366', color: '#fff' }}>
+              <Share2 size={15} /> WhatsApp
+            </button>
+          </div>
+        )}
+      </div>
     </div>
   )
 }

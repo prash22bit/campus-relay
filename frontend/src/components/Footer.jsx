@@ -12,7 +12,7 @@ import {
 export default function Footer() {
   return (
     <footer className="footer" style={{ borderTop: '1px solid #e1e7f1', background: '#0b1020', color: '#9aa5be', padding: '40px clamp(20px, 5vw, 76px) 24px' }}>
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: 32, marginBottom: 32 }}>
+      <div className="footer-grid">
         <div>
           <div style={{ display: 'flex', alignItems: 'center', gap: 12, color: '#fff', marginBottom: 14 }}>
             <img src="/nxtwave_white_logo.svg" alt="NxtWave Logo" style={{ height: 26, width: 'auto' }} />
