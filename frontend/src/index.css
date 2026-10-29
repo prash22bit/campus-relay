@@ -706,6 +706,26 @@ ul, ol { list-style: none; }
   gap: 16px;
 }
 .admin-topbar h1 { font-size: 26px; letter-spacing: -.04em; font-weight: 900; }
+.admin-topbar-actions { display: flex; align-items: center; gap: 8px; }
+
+/* ── Admin Dashboard Grids ──────────────────────────────────── */
+.admin-mobile-header { display: none; }
+.admin-charts-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+.admin-breakdown-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+.admin-target-mix-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
 
 /* KPI strip */
 .kpi-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-bottom: 28px; }
@@ -1006,6 +1026,160 @@ ul, ol { list-style: none; }
   .topbar-nav { display: none !important; }
   .desktop-only-btn { display: none !important; }
   .mobile-menu-btn { display: flex !important; }
+
+  /* Mobile Admin Navigation & Layout */
+  .admin-layout {
+    flex-direction: column !important;
+  }
+  .admin-sidebar {
+    display: none !important; /* Replaced by sleek mobile app header */
+  }
+  .admin-mobile-header {
+    display: flex !important;
+    flex-direction: column;
+    background: var(--navy);
+    position: sticky;
+    top: 0;
+    z-index: 200;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
+  }
+  .admin-mobile-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 16px 8px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+  .admin-mobile-icon-btn {
+    width: 36px;
+    height: 36px;
+    border-radius: 9px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background 0.15s;
+  }
+  .admin-mobile-icon-btn:active {
+    background: rgba(199, 255, 94, 0.2);
+    color: var(--lime);
+  }
+  .admin-mobile-tabs {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 12px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .admin-mobile-tabs::-webkit-scrollbar {
+    display: none;
+  }
+  .admin-mobile-tab {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 14px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 750;
+    color: #8fa0c0;
+    background: transparent;
+    border: 1px solid transparent;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: all 0.18s;
+  }
+  .admin-mobile-tab.active {
+    background: rgba(199, 255, 94, 0.15);
+    color: var(--lime);
+    border-color: rgba(199, 255, 94, 0.3);
+  }
+
+  /* Admin Main Mobile Adjustments */
+  .admin-main {
+    padding: 18px 14px 40px !important;
+    width: 100% !important;
+    overflow-x: hidden;
+  }
+  .admin-topbar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 18px;
+  }
+  .admin-topbar h1 {
+    font-size: 22px !important;
+  }
+  .admin-topbar-actions {
+    display: flex;
+    gap: 8px;
+    width: 100%;
+  }
+  .admin-topbar-actions .btn {
+    flex: 1;
+    justify-content: center;
+    height: 42px;
+    font-size: 13px;
+  }
+
+  /* KPI Grid on Mobile (2x2) */
+  .kpi-grid {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 10px !important;
+    margin-bottom: 18px !important;
+  }
+  .kpi-card {
+    padding: 14px 12px !important;
+    border-radius: 14px !important;
+  }
+  .kpi-label {
+    font-size: 10px !important;
+  }
+  .kpi-value {
+    font-size: 24px !important;
+  }
+  .kpi-sub {
+    font-size: 10px !important;
+  }
+
+  /* Charts Stacked Vertically */
+  .admin-charts-grid {
+    grid-template-columns: 1fr !important;
+    gap: 14px !important;
+    margin-bottom: 16px !important;
+  }
+  .admin-breakdown-grid {
+    grid-template-columns: 1fr !important;
+    gap: 14px !important;
+  }
+  .admin-target-mix-grid {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 10px !important;
+  }
+
+  /* Filter Bar on Mobile */
+  .admin-filter-bar {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 8px !important;
+    width: 100% !important;
+  }
+  .admin-filter-bar .search-input,
+  .admin-filter-bar .filter-select {
+    width: 100% !important;
+    min-height: 44px !important;
+    font-size: 14px !important;
+  }
+  .admin-filter-bar button {
+    height: 42px !important;
+    font-size: 13px !important;
+  }
 }
 
 @media (max-width: 768px) {

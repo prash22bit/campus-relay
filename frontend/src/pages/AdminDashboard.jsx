@@ -179,7 +179,44 @@ export default function AdminDashboard() {
   /* ── Render ──────────────────────────────────────────────── */
   return (
     <div className="admin-layout">
-      {/* Sidebar */}
+      {/* Mobile Admin Header & Segmented Tab Navigation */}
+      <div className="admin-mobile-header">
+        <div className="admin-mobile-top">
+          <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+            <img src="/nxtwave_white_logo.svg" alt="NxtWave Logo" style={{ height: 22, width: 'auto' }} />
+            <span style={{ fontSize: 10, background: 'rgba(199,255,94,0.15)', color: '#c7ff5e', padding: '3px 8px', borderRadius: 6, fontWeight: 800 }}>GROWTH HUB</span>
+          </div>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+            <button onClick={loadDashboard} className="admin-mobile-icon-btn" aria-label="Refresh" title="Refresh">
+              <RefreshCw size={15} />
+            </button>
+            <button onClick={handleExport} className="admin-mobile-icon-btn" aria-label="Export CSV" title="Export CSV">
+              <Download size={15} />
+            </button>
+            <button onClick={() => { logout(); navigate('/') }} className="admin-mobile-icon-btn" aria-label="Logout" title="Logout">
+              <LogOut size={15} />
+            </button>
+          </div>
+        </div>
+
+        {/* Mobile Horizontal Segmented Tab Control */}
+        <div className="admin-mobile-tabs">
+          <button className={`admin-mobile-tab ${view==='overview' ? 'active' : ''}`} onClick={() => setView('overview')}>
+            <BarChart3 size={14} /> Overview
+          </button>
+          <button className={`admin-mobile-tab ${view==='registrations' ? 'active' : ''}`} onClick={() => setView('registrations')}>
+            <ClipboardList size={14} /> Regs ({dash?.totalRegistrations || 0})
+          </button>
+          <button className={`admin-mobile-tab ${view==='captains' ? 'active' : ''}`} onClick={() => setView('captains')}>
+            <Users size={14} /> Captains
+          </button>
+          <button className={`admin-mobile-tab ${view==='plan' ? 'active' : ''}`} onClick={() => setView('plan')}>
+            <Target size={14} /> Strategy
+          </button>
+        </div>
+      </div>
+
+      {/* Desktop Sidebar (Hidden on mobile) */}
       <aside className="admin-sidebar">
         <div className="sidebar-brand" style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: 10, paddingBottom: 16 }}>
           <img src="/nxtwave_white_logo.svg" alt="NxtWave Logo" style={{ height: 24, width: 'auto' }} />
@@ -217,7 +254,7 @@ export default function AdminDashboard() {
           <>
             <div className="admin-topbar">
               <h1>Growth Dashboard</h1>
-              <div style={{ display: 'flex', gap: 8 }}>
+              <div className="admin-topbar-actions">
                 <button className="btn btn-outline-dark btn-sm" onClick={loadDashboard} style={{ display: 'inline-flex', alignItems: 'center', gap: 6 }}>
                   <RefreshCw size={14} /> Refresh
                 </button>
@@ -264,7 +301,7 @@ export default function AdminDashboard() {
                 </div>
 
                 {/* Charts row */}
-                <div style={{ display: 'grid', gridTemplateColumns: '1.4fr 1fr', gap: 16, marginBottom: 20 }}>
+                <div className="admin-charts-grid">
                   {/* Daily registrations bar chart */}
                   <div className="card">
                     <h3 style={{ fontSize: 15, fontWeight: 800, marginBottom: 16 }}>Registrations — last 7 days</h3>
@@ -306,7 +343,7 @@ export default function AdminDashboard() {
                 </div>
 
                 {/* Bottom row */}
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }}>
+                <div className="admin-breakdown-grid">
                   {/* Branch breakdown */}
                   <div className="card">
                     <h3 style={{ fontSize: 15, fontWeight: 800, marginBottom: 14 }}>By branch</h3>
@@ -350,7 +387,7 @@ export default function AdminDashboard() {
                 {/* Channel target mix */}
                 <div className="card" style={{ marginTop: 16 }}>
                   <h3 style={{ fontSize: 15, fontWeight: 800, marginBottom: 16 }}>Channel target mix (planning model)</h3>
-                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 12 }}>
+                  <div className="admin-target-mix-grid">
                     {dash.targetChannelMix?.map((ch) => (
                       <div key={ch.channel} style={{ padding: '14px 16px', background: '#f8f9fd', borderRadius: 14, border: '1px solid var(--line)' }}>
                         <div style={{ fontSize: 11, fontWeight: 800, color: '#5a6a8a', marginBottom: 6, lineHeight: 1.4 }}>{ch.channel}</div>
@@ -410,7 +447,7 @@ export default function AdminDashboard() {
             </div>
 
             {/* Filter bar */}
-            <div className="filter-bar" style={{ marginBottom: 16 }}>
+            <div className="filter-bar admin-filter-bar" style={{ marginBottom: 16 }}>
               <input className="search-input" placeholder="Search name, email, college…"
                 value={search} onChange={(e) => setSearch(e.target.value)}
                 onKeyDown={(e) => e.key === 'Enter' && loadRegistrations(1)} />
